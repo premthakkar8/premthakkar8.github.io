@@ -7,12 +7,12 @@ const sora = Sora({ variable: "--font-sora", subsets: ["latin"], weight: ["400",
 const mono = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Prem Thakkar · Full-Stack Developer",
+  title: "Prem Thakkar · AI Consultant & Web Developer",
   description:
-    "Computer Engineering student building full-stack web apps and Python/AI projects. Open to internships and freelance work.",
+    "Prem Thakkar builds fast, modern websites and practical AI solutions for businesses. See client work like Eventor Events.",
   openGraph: {
-    title: "Prem Thakkar · Full-Stack Developer",
-    description: "Full-stack web apps and Python/AI projects. Open to internships and freelance work.",
+    title: "Prem Thakkar · AI Consultant & Web Developer",
+    description: "Fast, modern websites and practical AI solutions for businesses.",
     type: "website",
   },
 };

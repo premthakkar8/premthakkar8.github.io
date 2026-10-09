@@ -2,12 +2,12 @@ import Nav from "@/components/Nav";
 import OceanExperience from "@/components/OceanExperience";
 import Reveal from "@/components/Reveal";
 import { ArrowUpRight, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons";
-import { about, alsoWorkedWith, exploring, moreProjects, profile, projects, skills } from "@/lib/content";
+import { about, clientWork, profile, projects, services, toolkit, type Project } from "@/lib/content";
 
 function SectionHeading({ zone, depth, title }: { zone: string; depth: string; title: string }) {
   return (
     <div data-reveal className="mb-12 sm:mb-16">
-      <p className="font-mono text-[11px] tracking-[0.28em] text-glow uppercase">
+      <p className="font-mono text-xs tracking-[0.28em] text-glow uppercase">
         {zone} <span className="text-mist/60">· {depth}</span>
       </p>
       <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-foam sm:text-5xl">{title}</h2>
@@ -15,15 +15,26 @@ function SectionHeading({ zone, depth, title }: { zone: string; depth: string; t
   );
 }
 
-function Chip({ children, muted = false }: { children: React.ReactNode; muted?: boolean }) {
+function Chip({ children }: { children: React.ReactNode }) {
+  return <span className="rounded-full bg-glow/[0.06] px-3 py-1 text-[13px] text-foam/90 ring-1 ring-glow/20">{children}</span>;
+}
+
+function ProjectLinks({ links }: { links: Project["links"] }) {
   return (
-    <span
-      className={`rounded-full px-3 py-1 text-[13px] ring-1 ${
-        muted ? "text-mist ring-white/10" : "bg-glow/[0.06] text-foam/90 ring-glow/20"
-      }`}
-    >
-      {children}
-    </span>
+    <div className="flex flex-wrap gap-2">
+      {links.map((l) => (
+        <a
+          key={l.href}
+          href={l.href}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-medium text-foam ring-1 ring-white/10 transition hover:bg-glow/10 hover:text-glow hover:ring-glow/40"
+        >
+          {l.label}
+          <ArrowUpRight className="size-3.5" />
+        </a>
+      ))}
+    </div>
   );
 }
 
@@ -37,46 +48,45 @@ export default function Home() {
       <main id="top" className="relative z-10">
         <section data-depth="0" className="flex min-h-svh items-center px-6 pt-24 pb-16">
           <div className="mx-auto w-full max-w-6xl">
-            <p className="hero-in glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 font-mono text-[11px] tracking-[0.2em] text-glow uppercase">
-              <span className="pulse-dot size-1.5 rounded-full bg-aqua" />
-              Open to internships &amp; freelance
+            <p className="hero-in font-mono text-xs tracking-[0.3em] text-glow uppercase sm:text-sm">
+              {profile.roles.join("  ·  ")}
             </p>
             <h1
-              className="hero-in mt-7 font-display text-[clamp(3.2rem,9vw,7.5rem)] leading-[0.95] font-semibold tracking-[-0.035em] text-foam"
+              className="hero-in mt-6 font-display text-[clamp(3.2rem,9vw,7.5rem)] leading-[0.95] font-semibold tracking-[-0.035em] text-foam"
               style={{ animationDelay: "120ms" }}
             >
               Prem
               <br />
               <span className="text-gradient">Thakkar</span>
             </h1>
-            <p
-              className="hero-in mt-7 flex flex-wrap gap-x-3 gap-y-1 text-base text-mist sm:text-lg"
-              style={{ animationDelay: "240ms" }}
-            >
-              {profile.roles.map((r, i) => (
-                <span key={r} className="flex items-center gap-3">
-                  {i > 0 && <span className="text-glow/60">/</span>}
-                  {r}
-                </span>
-              ))}
-            </p>
-            <p className="hero-in mt-4 max-w-xl text-lg text-foam/80 sm:text-xl" style={{ animationDelay: "320ms" }}>
+            <p className="hero-in mt-7 max-w-xl text-lg text-foam/80 sm:text-xl" style={{ animationDelay: "260ms" }}>
               {profile.tagline}
             </p>
-            <div className="hero-in mt-10 flex flex-wrap gap-3" style={{ animationDelay: "420ms" }}>
+            <div className="hero-in mt-10 flex flex-wrap gap-3" style={{ animationDelay: "380ms" }}>
               <a
                 href="#work"
                 className="rounded-xl bg-glow px-5 py-3 text-sm font-semibold text-abyss shadow-[0_0_40px_-8px_rgba(56,189,248,0.8)] transition hover:bg-aqua"
               >
-                Explore my work
+                View my work
               </a>
               <a
                 href="#contact"
                 className="glass rounded-xl px-5 py-3 text-sm font-medium text-foam transition hover:border-glow/40"
               >
-                Get in touch
+                Start a project
               </a>
             </div>
+            <a
+              href={clientWork[0].links[0].href}
+              target="_blank"
+              rel="noreferrer"
+              className="hero-in group mt-8 inline-flex items-center gap-2 text-sm text-mist transition hover:text-foam"
+              style={{ animationDelay: "480ms" }}
+            >
+              <span className="font-mono text-[11px] tracking-[0.2em] text-glow/80 uppercase">Latest launch</span>
+              {clientWork[0].title}
+              <ArrowUpRight className="size-3.5 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
           </div>
           <a
             href="#about"
@@ -110,36 +120,31 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="skills" data-depth="700" className="px-6 py-32 sm:py-40">
+        <section id="services" data-depth="700" className="px-6 py-32 sm:py-40">
           <div className="mx-auto max-w-6xl">
-            <SectionHeading zone="Twilight zone" depth="700 m" title="Toolkit" />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {skills.map((group) => (
-                <div key={group.title} data-reveal className="glass card rounded-2xl p-6">
-                  <h3 className="font-mono text-[11px] tracking-[0.2em] text-glow/80 uppercase">{group.title}</h3>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <Chip key={item}>{item}</Chip>
+            <SectionHeading zone="Twilight zone" depth="700 m" title="Services" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {services.map((s, i) => (
+                <article key={s.title} data-reveal className="glass card rounded-3xl p-8 sm:p-10">
+                  <span className="font-mono text-sm text-glow/70">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-foam sm:text-3xl">{s.title}</h3>
+                  <p className="mt-3 text-foam/75">{s.summary}</p>
+                  <ul className="mt-6 space-y-2.5 text-[15px] text-mist">
+                    {s.points.map((p) => (
+                      <li key={p} className="flex gap-3">
+                        <span className="mt-[9px] size-1 shrink-0 rounded-full bg-glow" />
+                        {p}
+                      </li>
                     ))}
-                  </div>
-                </div>
+                  </ul>
+                </article>
               ))}
             </div>
-            <div data-reveal className="mt-8 flex flex-col gap-4 text-sm sm:flex-row sm:gap-10">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="mr-1 text-mist">Also worked with</span>
-                {alsoWorkedWith.map((s) => (
-                  <Chip key={s} muted>
-                    {s}
-                  </Chip>
-                ))}
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="mr-1 text-mist">Exploring</span>
-                {exploring.map((s) => (
-                  <Chip key={s} muted>
-                    {s}
-                  </Chip>
+            <div data-reveal className="mt-10">
+              <p className="font-mono text-[11px] tracking-[0.2em] text-glow/80 uppercase">Toolkit</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {toolkit.map((t) => (
+                  <Chip key={t}>{t}</Chip>
                 ))}
               </div>
             </div>
@@ -150,25 +155,18 @@ export default function Home() {
           <div className="mx-auto max-w-6xl">
             <SectionHeading zone="Midnight zone" depth="2,000 m" title="Selected work" />
             <div className="space-y-5">
-              {projects.map((p, i) => (
+              {clientWork.map((p) => (
                 <article
                   key={p.title}
                   data-reveal
-                  className="glass card group grid gap-6 rounded-3xl p-7 sm:p-9 lg:grid-cols-[auto_1fr_auto] lg:gap-10"
+                  className="glass card grid gap-6 rounded-3xl p-7 sm:p-9 lg:grid-cols-[1fr_auto] lg:gap-10"
                 >
-                  <span className="font-mono text-sm text-glow/70">{String(i + 1).padStart(2, "0")}</span>
                   <div>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <h3 className="font-display text-2xl font-semibold tracking-tight text-foam sm:text-3xl">
-                        {p.title}
-                      </h3>
-                      {p.status && (
-                        <span className="rounded-full bg-aqua/10 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.15em] text-aqua uppercase ring-1 ring-aqua/30">
-                          {p.status}
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-3 max-w-2xl text-foam/75">{p.summary}</p>
+                    <p className="font-mono text-[11px] tracking-[0.2em] text-aqua uppercase">{p.label}</p>
+                    <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight text-foam sm:text-4xl">
+                      {p.title}
+                    </h3>
+                    <p className="mt-3 max-w-2xl text-lg text-foam/75">{p.summary}</p>
                     <ul className="mt-5 space-y-2 text-[15px] text-mist">
                       {p.highlights.map((h) => (
                         <li key={h} className="flex gap-3">
@@ -183,38 +181,40 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                  <div className="flex gap-2 lg:flex-col">
-                    {p.links.map((l) => (
-                      <a
-                        key={l.href}
-                        href={l.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-medium text-foam ring-1 ring-white/10 transition hover:bg-glow/10 hover:text-glow hover:ring-glow/40"
-                      >
-                        {l.label}
-                        <ArrowUpRight className="size-3.5" />
-                      </a>
-                    ))}
+                  <div className="lg:pt-1">
+                    <ProjectLinks links={p.links} />
                   </div>
                 </article>
               ))}
             </div>
-            <div data-reveal className="mt-10 grid gap-4 sm:grid-cols-2">
-              {moreProjects.map((p) => (
-                <a
-                  key={p.title}
-                  href={p.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="glass card group flex items-start justify-between gap-4 rounded-2xl p-6"
-                >
-                  <div>
-                    <h3 className="font-display text-lg font-semibold text-foam">{p.title}</h3>
-                    <p className="mt-1 text-sm text-mist">{p.summary}</p>
+
+            <h3 data-reveal className="mt-20 font-mono text-xs tracking-[0.28em] text-glow uppercase">
+              Projects &amp; experiments
+            </h3>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {projects.map((p) => (
+                <article key={p.title} data-reveal className="glass card flex flex-col rounded-2xl p-6">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <p className="font-mono text-[10px] tracking-[0.18em] text-glow/80 uppercase">{p.label}</p>
+                    {p.status && (
+                      <span className="rounded-full bg-aqua/10 px-2 py-0.5 font-mono text-[9px] tracking-[0.15em] text-aqua uppercase ring-1 ring-aqua/30">
+                        {p.status}
+                      </span>
+                    )}
                   </div>
-                  <ArrowUpRight className="mt-1 size-4 shrink-0 text-mist transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-glow" />
-                </a>
+                  <h4 className="mt-3 font-display text-xl font-semibold text-foam">{p.title}</h4>
+                  <p className="mt-2 text-sm text-mist">{p.summary}</p>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {p.stack.map((s) => (
+                      <span key={s} className="text-xs text-foam/60">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-auto pt-5">
+                    <ProjectLinks links={p.links} />
+                  </div>
+                </article>
               ))}
             </div>
           </div>
@@ -223,14 +223,15 @@ export default function Home() {
         <section id="contact" data-depth="4500" className="flex min-h-svh items-center px-6 py-32">
           <div className="mx-auto w-full max-w-6xl text-center">
             <div data-reveal>
-              <p className="font-mono text-[11px] tracking-[0.28em] text-glow uppercase">
+              <p className="font-mono text-xs tracking-[0.28em] text-glow uppercase">
                 The abyss <span className="text-mist/60">· 4,500 m</span>
               </p>
               <h2 className="mx-auto mt-6 max-w-3xl font-display text-[clamp(2.4rem,6vw,4.75rem)] leading-[1.02] font-semibold tracking-[-0.03em] text-foam">
-                Let&apos;s build something <span className="text-gradient">useful.</span>
+                Have a project in <span className="text-gradient">mind?</span>
               </h2>
               <p className="mx-auto mt-6 max-w-lg text-lg text-mist">
-                Open to internships, freelance projects, and collaborations. The fastest way to reach me is email.
+                A new website, an AI tool, or advice on where to start. Send a few lines about your business and what you
+                need.
               </p>
               <a
                 href={`mailto:${profile.email}`}
@@ -274,7 +275,7 @@ export default function Home() {
 
       <footer className="relative z-10 px-6 pb-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-sm text-mist sm:flex-row">
-          <p>© {new Date().getFullYear()} Prem Thakkar</p>
+          <p>© {new Date().getFullYear()} Prem Thakkar · AI Consultant &amp; Web Developer</p>
           <a href="#top" className="font-mono text-xs tracking-[0.2em] uppercase transition hover:text-glow">
             Back to surface ↑
           </a>

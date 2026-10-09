@@ -5,7 +5,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { scrollState } from "@/lib/scroll";
 import { cameraHeight, cameraPitch, env, updateEnvironment } from "./env";
+import { Dolphins } from "./Dolphins";
 import { JellyfishBloom } from "./Jellyfish";
+import { Sharks } from "./Sharks";
 import { LightRays } from "./LightRays";
 import { Bioluminescence, Bubbles, MarineSnow } from "./Particles";
 import { Sky } from "./Sky";
@@ -57,6 +59,8 @@ export default function OceanCanvas({ onReady }: { onReady?: () => void }) {
       <MarineSnow />
       <Bubbles />
       <Bioluminescence />
+      <Dolphins />
+      <Sharks />
       <JellyfishBloom />
     </Canvas>
   );

@@ -1,7 +1,7 @@
 export const profile = {
   name: "Prem Thakkar",
-  roles: ["Computer Engineering Student", "Full-Stack Development", "Python & AI"],
-  tagline: "I build practical web and AI products, from the API to the interface.",
+  roles: ["AI Consultant", "Web Developer"],
+  tagline: "I build fast, modern websites and practical AI solutions that help businesses grow.",
   email: "premthakkar950@gmail.com",
   github: "https://github.com/premthakkar8",
   // Add your LinkedIn URL to show the LinkedIn link.
@@ -10,30 +10,49 @@ export const profile = {
 
 export const about = {
   paragraphs: [
-    "I'm a BTech Computer Engineering student who enjoys turning ideas into software people can actually use.",
-    "I work across the stack: React interfaces, REST APIs in Node.js, Express and FastAPI, MongoDB data models, and Python for data and machine learning. I learn best by shipping complete projects end to end.",
+    "I'm Prem Thakkar, an AI consultant and web developer. I help businesses get online with websites that look sharp, load fast, and turn visitors into enquiries.",
+    "On the AI side, I find where automation and machine learning can save time or open new value, then build it: from data pipelines and models to tools a team actually uses.",
   ],
   facts: [
-    { label: "Studying", value: "BTech, Computer Engineering" },
-    { label: "Focus", value: "Full-stack apps, backend APIs, applied ML" },
-    { label: "Open to", value: "Internships, freelance, collaborations" },
+    { label: "What I do", value: "Business websites, web apps, AI solutions" },
+    { label: "How I work", value: "Clear scope, fast delivery, direct communication" },
+    { label: "Background", value: "BTech, Computer Engineering" },
   ],
 };
 
-export const skills = [
-  { title: "Languages", items: ["Python", "JavaScript", "TypeScript", "HTML", "CSS"] },
-  { title: "Frontend", items: ["React", "Tailwind CSS", "Bootstrap"] },
-  { title: "Backend", items: ["Node.js", "Express", "FastAPI", "REST APIs", "JWT"] },
-  { title: "Data & ML", items: ["scikit-learn", "pandas", "NumPy", "NLTK"] },
-  { title: "Databases & services", items: ["MongoDB", "Mongoose", "Cloudinary"] },
-  { title: "Tools & deployment", items: ["Git", "GitHub Actions", "GitHub Pages", "Netlify"] },
+export const services = [
+  {
+    title: "Web development",
+    summary: "Responsive business websites and web apps, built to be fast, easy to update, and found on search.",
+    points: ["Business and portfolio websites", "Landing pages and e-commerce", "Custom web applications"],
+  },
+  {
+    title: "AI consulting",
+    summary: "Practical AI for real workflows: I help you pick the right use case, then design and build it.",
+    points: ["AI strategy and use-case discovery", "Automation and AI-powered tools", "Machine-learning models and data pipelines"],
+  },
 ];
 
-export const alsoWorkedWith = ["Java", "PHP", "Flask", "WordPress"];
-export const exploring = ["Next.js", "Supabase", "Three.js"];
+export const toolkit = [
+  "Python",
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Express",
+  "FastAPI",
+  "MongoDB",
+  "scikit-learn",
+  "pandas",
+  "Tailwind CSS",
+  "Three.js",
+  "GitHub Actions",
+];
 
 export type Project = {
   title: string;
+  label: string;
   summary: string;
   highlights: string[];
   stack: string[];
@@ -41,27 +60,53 @@ export type Project = {
   status?: string;
 };
 
+export const clientWork: Project[] = [
+  {
+    title: "Eventor Events",
+    label: "Client website",
+    summary: "Website for Eventor, a wedding and event planner in Ahmedabad, built to showcase their work and bring in enquiries.",
+    highlights: [
+      "Services, gallery, and client testimonial sections",
+      "Clear calls to action that lead visitors to get in touch",
+      "Responsive layout, live on the client's own domain",
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "SEO"],
+    links: [{ label: "Visit site", href: "https://eventorevents.co.in" }],
+  },
+  {
+    title: "DevX Solution",
+    label: "Product website",
+    summary: "Website for DevX, an early-access AI code-review workspace, explaining the product and collecting early-access requests.",
+    highlights: [
+      "Product story, sample review brief, and early-access flow",
+      "Static build on Netlify with a custom domain",
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "Netlify"],
+    links: [{ label: "Visit site", href: "https://devxsolution.online" }],
+  },
+];
+
 export const projects: Project[] = [
   {
     title: "AI Fake News Detector",
+    label: "AI · Machine learning",
     summary: "A news reader that pulls live articles and flags likely misinformation with a machine-learning model.",
     highlights: [
       "TF-IDF features and a class-balanced logistic regression model",
       "FastAPI endpoint returns a label, confidence, and plain-language explanation",
-      "Low-confidence predictions are marked uncertain instead of forced",
     ],
-    stack: ["Python", "FastAPI", "scikit-learn", "React", "TypeScript", "Tailwind"],
+    stack: ["Python", "FastAPI", "scikit-learn", "React", "TypeScript"],
     links: [{ label: "Code", href: "https://github.com/premthakkar8/Fake-News-Detector" }],
   },
   {
     title: "Gold Intraday Research Bot",
+    label: "AI · Automation",
     summary: "A scheduled Python engine that drafts gold trade plans, grades its own results, and adapts which strategies it trusts.",
     highlights: [
       "Scores five strategies from price action, the US dollar, oil, and headlines",
-      "Self-grading memory with a five-day half-life",
-      "Runs on GitHub Actions and publishes a live dashboard, with unit tests",
+      "Runs on GitHub Actions and publishes a live dashboard",
     ],
-    stack: ["Python", "pandas", "NumPy", "GitHub Actions", "GitHub Pages"],
+    stack: ["Python", "pandas", "GitHub Actions"],
     links: [
       { label: "Code", href: "https://github.com/premthakkar8/gold-intraday-bot" },
       { label: "Live", href: "https://premthakkar8.github.io/gold-intraday-bot/" },
@@ -69,30 +114,17 @@ export const projects: Project[] = [
   },
   {
     title: "EcomLite",
-    summary: "A single-store MERN e-commerce platform with a product API, Cloudinary image management, and PayU checkout.",
+    label: "Web app · E-commerce",
+    summary: "A single-store MERN e-commerce platform with a product API, admin tools, Cloudinary images, and PayU checkout.",
     highlights: [
+      "JWT-protected admin product and image management",
       "Paginated catalogue with search and review-based ratings",
-      "JWT-protected, admin-only product and image management",
-      "bcrypt-hashed passwords and centralised error handling",
     ],
-    stack: ["React", "Node.js", "Express", "MongoDB", "Cloudinary"],
+    stack: ["React", "Node.js", "Express", "MongoDB"],
     links: [
       { label: "Frontend", href: "https://github.com/premthakkar8/EcomLite-frontend" },
       { label: "Backend", href: "https://github.com/premthakkar8/EcomLite-backend" },
     ],
     status: "In progress",
-  },
-];
-
-export const moreProjects = [
-  {
-    title: "DevX Solution",
-    summary: "Website for an early-access AI code-review workspace.",
-    href: "https://devxsolution.online",
-  },
-  {
-    title: "Daily Briefing Bot",
-    summary: "Async Python bot that sends weather, news, and stocks by email, Discord, or Slack.",
-    href: "https://github.com/premthakkar8/daily-briefing-bot",
   },
 ];

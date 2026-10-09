@@ -96,18 +96,53 @@ body {
   animation: hero-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-@keyframes pulse-dot {
+.ai-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ai-blink 4.5s ease-in-out infinite;
+}
+
+.ai-hand-left,
+.ai-hand-right {
+  animation: ai-type 0.42s ease-in-out infinite alternate;
+}
+
+.ai-hand-right {
+  animation-delay: -0.21s;
+}
+
+.ai-antenna {
+  animation: ai-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes ai-blink {
   0%,
+  90%,
   100% {
-    box-shadow: 0 0 0 0 rgb(94 234 212 / 0.6);
+    transform: scaleY(1);
   }
-  50% {
-    box-shadow: 0 0 0 5px rgb(94 234 212 / 0);
+  94% {
+    transform: scaleY(0.12);
   }
 }
 
-.pulse-dot {
-  animation: pulse-dot 2.4s ease-in-out infinite;
+@keyframes ai-type {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-1.6px);
+  }
+}
+
+@keyframes ai-glow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
 }
 
 @keyframes scroll-cue {
@@ -148,8 +183,11 @@ body {
   }
 
   .hero-in,
-  .pulse-dot,
-  .scroll-cue-line {
+  .scroll-cue-line,
+  .ai-eyes,
+  .ai-hand-left,
+  .ai-hand-right,
+  .ai-antenna {
     animation: none;
   }
 

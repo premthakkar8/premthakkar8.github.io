@@ -33,11 +33,29 @@ export function ArrowUpRight({ className }: IconProps) {
   );
 }
 
-export function WaveMark({ className }: IconProps) {
+export function AiCoderMark({ className }: IconProps) {
   return (
-    <svg viewBox="0 0 32 32" aria-hidden className={className} fill="none">
-      <path d="M3 13c3.2 0 3.2-3 6.5-3s3.3 3 6.5 3 3.3-3 6.5-3S25.8 13 29 13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M3 21c3.2 0 3.2-3 6.5-3s3.3 3 6.5 3 3.3-3 6.5-3S25.8 21 29 21" stroke="currentColor" strokeOpacity="0.45" strokeWidth="2.2" strokeLinecap="round" />
+    <svg viewBox="0 0 40 40" aria-hidden className={className} fill="none">
+      <line x1="20" y1="6" x2="20" y2="9.5" stroke="#38bdf8" strokeWidth="1.8" strokeLinecap="round" />
+      <circle className="ai-antenna" cx="20" cy="4.5" r="2.2" fill="#5eead4" />
+      <rect x="6.6" y="14.5" width="2.6" height="6" rx="1.3" fill="#38bdf8" />
+      <rect x="30.8" y="14.5" width="2.6" height="6" rx="1.3" fill="#38bdf8" />
+      <rect x="9" y="9.5" width="22" height="16" rx="6" fill="#06233b" stroke="#38bdf8" strokeWidth="1.8" />
+      <g className="ai-eyes">
+        <rect x="14" y="14.6" width="3.4" height="4.8" rx="1.7" fill="#5eead4" />
+        <rect x="22.6" y="14.6" width="3.4" height="4.8" rx="1.7" fill="#5eead4" />
+      </g>
+      <rect x="10.5" y="23.5" width="19" height="9.5" rx="1.8" fill="#0b4d6b" stroke="#38bdf8" strokeWidth="1.6" />
+      <path
+        d="M17.6 26.3l-2 1.9 2 1.9M22.4 26.3l2 1.9-2 1.9M20.9 25.8l-1.8 4.8"
+        stroke="#5eead4"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <rect x="5.5" y="33" width="29" height="2.8" rx="1.4" fill="#38bdf8" />
+      <circle className="ai-hand-left" cx="12.5" cy="32.6" r="2.1" fill="#5eead4" />
+      <circle className="ai-hand-right" cx="27.5" cy="32.6" r="2.1" fill="#5eead4" />
     </svg>
   );
 }
