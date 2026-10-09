@@ -23,21 +23,21 @@ export function seeded(seed: number) {
 }
 
 export const palette = {
-  zenith: new THREE.Color("#020617"),
-  horizon: new THREE.Color("#0b2f4e"),
+  zenith: new THREE.Color("#01040f"),
+  horizon: new THREE.Color("#0a2242"),
   moon: new THREE.Color("#d6f1ff"),
-  waterDeep: new THREE.Color("#021526"),
-  waterShallow: new THREE.Color("#0b4d6b"),
-  underside: new THREE.Color("#8adcee"),
-  ray: new THREE.Color("#9be7f5"),
+  waterDeep: new THREE.Color("#010a1c"),
+  waterShallow: new THREE.Color("#0a2c5a"),
+  underside: new THREE.Color("#6aa8dc"),
+  ray: new THREE.Color("#8fc8f0"),
 };
 
 const depthStops: [number, THREE.Color][] = [
-  [0, new THREE.Color("#0b6582")],
-  [-8, new THREE.Color("#08486a")],
-  [-20, new THREE.Color("#052c49")],
-  [-36, new THREE.Color("#021a31")],
-  [-62, new THREE.Color("#010913")],
+  [0, new THREE.Color("#0b3a6b")],
+  [-8, new THREE.Color("#082c57")],
+  [-20, new THREE.Color("#051f42")],
+  [-36, new THREE.Color("#03132b")],
+  [-62, new THREE.Color("#010711")],
 ];
 
 function underwaterColor(y: number, out: THREE.Color) {

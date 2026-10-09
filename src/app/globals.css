@@ -9,14 +9,14 @@
 @theme {
   --color-abyss: #010812;
   --color-foam: #e8f7ff;
-  --color-mist: #8fa6bd;
+  --color-mist: #a9bdd1;
   --color-glow: #38bdf8;
   --color-aqua: #5eead4;
 }
 
 @utility glass {
-  background: rgb(4 22 40 / 0.42);
-  border: 1px solid rgb(125 211 252 / 0.1);
+  background: rgb(3 14 32 / 0.58);
+  border: 1px solid rgb(125 211 252 / 0.12);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
 }
@@ -37,7 +37,7 @@ body {
   min-height: 100svh;
   color: var(--color-foam);
   font-family: var(--font-sans);
-  background: linear-gradient(180deg, #0b2f4e 0%, #0b6582 14%, #052c49 38%, #021a31 65%, #010913 100%);
+  background: linear-gradient(180deg, #0a2242 0%, #0b3a6b 14%, #051f42 38%, #03132b 65%, #010711 100%);
   overflow-x: hidden;
 }
 
@@ -54,8 +54,8 @@ body {
 
 .vignette {
   background:
-    radial-gradient(ellipse at 20% 40%, rgb(1 8 18 / 0.45), transparent 60%),
-    radial-gradient(ellipse at center, transparent 55%, rgb(1 8 18 / 0.55) 100%);
+    radial-gradient(ellipse at 18% 45%, rgb(1 6 16 / 0.6), transparent 62%),
+    radial-gradient(ellipse at center, transparent 50%, rgb(1 6 16 / 0.65) 100%);
 }
 
 .nav-veil {

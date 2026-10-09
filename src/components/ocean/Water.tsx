@@ -82,11 +82,17 @@ const fragmentShader = /* glsl */ `
       float ndv = max(dot(n, v), 0.0);
       float fresnel = 0.02 + 0.98 * pow(1.0 - ndv, 5.0);
       vec3 r = reflect(-v, n);
-      vec3 sky = mix(uSky * 1.25, uSky * 0.35, smoothstep(0.0, 0.5, r.y));
+      vec3 sky = mix(uSky * 1.1, uSky * 0.3, smoothstep(0.0, 0.5, r.y));
       float m = max(dot(r, uMoonDir), 0.0);
       sky += uMoonColor * (pow(m, 700.0) * 7.0 + pow(m, 70.0) * 0.6 + pow(m, 9.0) * 0.07);
-      vec3 body = mix(uDeep, uShallow, clamp(vH * 1.4 + 0.35, 0.0, 1.0) * 0.55);
-      col = mix(body, sky, fresnel);
+
+      float crest = clamp(vH * 1.4 + 0.35, 0.0, 1.0);
+      vec3 body = mix(uDeep, uShallow, crest * 0.6);
+      // Troughs and slopes facing away from the moon sit in shadow.
+      float trough = smoothstep(0.2, -0.3, vH);
+      float facing = clamp(dot(normalize(vec2(n.x, n.z) + 1e-4), normalize(uMoonDir.xz)) * 0.5 + 0.5, 0.0, 1.0);
+      float shade = mix(0.45, 1.0, (1.0 - trough * 0.75) * mix(0.7, 1.0, facing));
+      col = mix(body * shade, sky, fresnel * mix(0.6, 1.0, shade));
     } else {
       vec3 nb = -n;
       float ndv = max(dot(nb, v), 0.0);

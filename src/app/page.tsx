@@ -1,7 +1,7 @@
 import Nav from "@/components/Nav";
 import OceanExperience from "@/components/OceanExperience";
 import Reveal from "@/components/Reveal";
-import { ArrowUpRight, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons";
+import { ArrowUpRight, GitHubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "@/components/icons";
 import { about, clientWork, profile, projects, services, toolkit, type Project } from "@/lib/content";
 
 function SectionHeading({ zone, depth, title }: { zone: string; depth: string; title: string }) {
@@ -59,7 +59,7 @@ export default function Home() {
               <br />
               <span className="text-gradient">Thakkar</span>
             </h1>
-            <p className="hero-in mt-7 max-w-xl text-lg text-foam/80 sm:text-xl" style={{ animationDelay: "260ms" }}>
+            <p className="hero-in mt-7 max-w-xl text-lg text-foam/90 sm:text-xl" style={{ animationDelay: "260ms" }}>
               {profile.tagline}
             </p>
             <div className="hero-in mt-10 flex flex-wrap gap-3" style={{ animationDelay: "380ms" }}>
@@ -70,10 +70,13 @@ export default function Home() {
                 View my work
               </a>
               <a
-                href="#contact"
-                className="glass rounded-xl px-5 py-3 text-sm font-medium text-foam transition hover:border-glow/40"
+                href={profile.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium text-foam transition hover:border-glow/40 hover:text-aqua"
               >
-                Start a project
+                <WhatsAppIcon className="size-4 text-aqua" />
+                Book an appointment
               </a>
             </div>
             <a
@@ -103,7 +106,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl">
             <SectionHeading zone="Sunlight zone" depth="150 m" title="About" />
             <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-              <div data-reveal className="space-y-5 text-lg leading-relaxed text-foam/80 sm:text-xl">
+              <div data-reveal className="space-y-5 text-lg leading-relaxed text-foam/90 sm:text-xl">
                 {about.paragraphs.map((p) => (
                   <p key={p}>{p}</p>
                 ))}
@@ -128,7 +131,7 @@ export default function Home() {
                 <article key={s.title} data-reveal className="glass card rounded-3xl p-8 sm:p-10">
                   <span className="font-mono text-sm text-glow/70">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-foam sm:text-3xl">{s.title}</h3>
-                  <p className="mt-3 text-foam/75">{s.summary}</p>
+                  <p className="mt-3 text-foam/85">{s.summary}</p>
                   <ul className="mt-6 space-y-2.5 text-[15px] text-mist">
                     {s.points.map((p) => (
                       <li key={p} className="flex gap-3">
@@ -166,7 +169,7 @@ export default function Home() {
                     <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight text-foam sm:text-4xl">
                       {p.title}
                     </h3>
-                    <p className="mt-3 max-w-2xl text-lg text-foam/75">{p.summary}</p>
+                    <p className="mt-3 max-w-2xl text-lg text-foam/85">{p.summary}</p>
                     <ul className="mt-5 space-y-2 text-[15px] text-mist">
                       {p.highlights.map((h) => (
                         <li key={h} className="flex gap-3">
@@ -206,7 +209,7 @@ export default function Home() {
                   <p className="mt-2 text-sm text-mist">{p.summary}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {p.stack.map((s) => (
-                      <span key={s} className="text-xs text-foam/60">
+                      <span key={s} className="text-xs text-foam/70">
                         {s}
                       </span>
                     ))}
@@ -230,12 +233,22 @@ export default function Home() {
                 Have a project in <span className="text-gradient">mind?</span>
               </h2>
               <p className="mx-auto mt-6 max-w-lg text-lg text-mist">
-                A new website, an AI tool, or advice on where to start. Send a few lines about your business and what you
-                need.
+                A new website, an AI tool, or advice on where to start. Book a quick call on WhatsApp and tell me about
+                your business.
               </p>
               <a
+                href={profile.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-10 inline-flex items-center gap-2.5 rounded-xl bg-glow px-7 py-4 text-base font-semibold text-abyss shadow-[0_0_50px_-10px_rgba(56,189,248,0.9)] transition hover:bg-aqua"
+              >
+                <WhatsAppIcon className="size-5" />
+                Book an appointment
+              </a>
+              <p className="mt-4 font-mono text-xs tracking-[0.15em] text-mist">WhatsApp · {profile.phone}</p>
+              <a
                 href={`mailto:${profile.email}`}
-                className="mt-10 inline-block font-display text-xl text-foam underline decoration-glow/40 underline-offset-8 transition hover:text-glow hover:decoration-glow sm:text-3xl"
+                className="mt-10 inline-block font-display text-lg text-foam underline decoration-glow/40 underline-offset-8 transition hover:text-glow hover:decoration-glow sm:text-2xl"
               >
                 {profile.email}
               </a>

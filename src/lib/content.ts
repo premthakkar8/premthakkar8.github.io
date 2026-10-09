@@ -4,6 +4,10 @@ export const profile = {
   tagline: "I build fast, modern websites and practical AI solutions that help businesses grow.",
   email: "premthakkar950@gmail.com",
   github: "https://github.com/premthakkar8",
+  phone: "+91 63533 13101",
+  whatsapp: `https://wa.me/916353313101?text=${encodeURIComponent(
+    "Hi Prem, I'd like to book an appointment to discuss a project.",
+  )}`,
   // Add your LinkedIn URL to show the LinkedIn link.
   linkedin: "",
 };
