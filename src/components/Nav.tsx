@@ -12,21 +12,19 @@ const links = [
 ];
 
 export default function Nav() {
-  const bar = useRef<HTMLDivElement>(null);
+  const header = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => bar.current?.classList.toggle("nav-scrolled", window.scrollY > 24);
+    const onScroll = () => header.current?.classList.toggle("nav-scrolled", window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-30 px-4 pt-4 sm:px-6">
-      <div
-        ref={bar}
-        className="nav-bar mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-transparent px-4 py-3 transition-all duration-500 sm:px-5"
-      >
+    <header ref={header} className="fixed inset-x-0 top-0 z-30 px-4 pt-4 sm:px-6">
+      <div aria-hidden className="nav-veil" />
+      <div className="nav-bar relative mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-transparent px-4 py-3 transition-all duration-500 sm:px-5">
         <a href="#top" className="flex items-center gap-3 text-foam" aria-label="Back to top">
           <AiCoderMark className="size-9" />
           <span className="font-display text-lg font-semibold tracking-tight">Prem Thakkar</span>

@@ -17,8 +17,8 @@
 @utility glass {
   background: rgb(4 22 40 / 0.42);
   border: 1px solid rgb(125 211 252 / 0.1);
-  backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
 }
 
 @utility text-gradient {
@@ -58,11 +58,30 @@ body {
     radial-gradient(ellipse at center, transparent 55%, rgb(1 8 18 / 0.55) 100%);
 }
 
-.nav-bar.nav-scrolled {
-  background: rgb(3 18 34 / 0.55);
-  border-color: rgb(125 211 252 / 0.1);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+.nav-veil {
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(100% + 56px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: linear-gradient(to bottom, rgb(1 10 22 / 0.88) 0%, rgb(1 10 22 / 0.6) 55%, rgb(1 10 22 / 0) 100%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+.nav-scrolled .nav-veil {
+  opacity: 1;
+}
+
+.nav-scrolled .nav-bar {
+  background: rgb(3 18 34 / 0.72);
+  border-color: rgb(125 211 252 / 0.12);
+  box-shadow: 0 10px 40px -12px rgb(0 0 0 / 0.6);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
 }
 
 .card {
